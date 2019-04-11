@@ -7,8 +7,7 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "production": "NODE_ENV=production webpack --progress --hide-modules"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Joshua RosenHanst",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.3",
