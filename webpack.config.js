@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
-const VueLoaderPlugin = require('vue-loader');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -96,10 +96,10 @@ module.exports = {
           'css-loader'
         ],
       },
-      // step 4: process Sass via sass-loader
+      // step 4: process SCSS via sass-loader
       // If we are in production, build a css file otherwise inject a <style> tag
       {
-        test: /\.(sass|scss)$/,
+        test: /\.scss$/,
         use: [
           (devMode ? 'vue-style-loader' : {
             loader: MiniCssExtractPlugin.loader,
@@ -108,7 +108,25 @@ module.exports = {
           'sass-loader'
         ],
       },
-      // step 5: handle image files via file-loader
+      // step 5: process Sass via sass-loader
+      // Note: vue-style-loader requires the `indentedSyntax` option to be specified to process sass
+      // If we are in production, build a css file otherwise inject a <style> tag
+      {
+        test: /\.sass$/,
+        use: [
+          (devMode ? 'vue-style-loader' : {
+            loader: MiniCssExtractPlugin.loader,
+          }),
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              indentedSyntax: true
+            }
+          }
+        ],
+      },
+      // step 6: handle image files via file-loader
       {
         test: /\.(svg|png|jpg|gif)$/,
         use: [
