@@ -2,6 +2,8 @@
 
 A starter kit for a [Vue.js](https://vuejs.org) and [Webpack](https://webpack.js.org/) project.
 
+## Features
+
 - ES2015+ and .vue file support via [babel 7](https://babeljs.io/)
 - Sass support via [sass-loader](https://github.com/webpack-contrib/sass-loader)
 - Linting via [eslint-loader](https://github.com/webpack-contrib/eslint-loader) and React Eslint config.
