@@ -1,0 +1,135 @@
+// Adapted from Bulma CSS | MIT License | https://github.com/jgthms/bulma
+html
+  background-color: $body-background-color
+  font-size: $body-size
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  min-width: 300px
+  overflow-x: hidden
+  overflow-y: scroll
+  text-rendering: $body-rendering
+  text-size-adjust: 100%
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section
+  display: block
+
+body,
+button,
+input,
+select,
+textarea
+  font-family: $body-family
+
+code,
+pre
+  -moz-osx-font-smoothing: auto
+  -webkit-font-smoothing: auto
+  font-family: $code-family
+
+body
+  color: $body-color
+  font-size: $body-size
+  font-weight: $body-weight
+  line-height: $body-line-height
+
+h1,h2,h3,h4,h5,h6
+  font-family: $header-family
+  font-weight: $header-weight
+  color: $header-text-color
+
+// Inline
+
+a
+  color: $link
+  cursor: pointer
+  text-decoration: none
+  strong
+    color: currentColor
+  &:hover
+    color: $link-hover
+    text-decoration: underline
+
+code
+  background-color: $code-background
+  color: $code
+  font-size: $code-size
+  font-weight: $code-weight
+  padding: $code-padding
+
+hr
+  background-color: $hr-background-color
+  border: none
+  display: block
+  height: $hr-height
+  margin: $hr-margin
+
+img
+  height: auto
+  max-width: 100%
+
+input[type="checkbox"],
+input[type="radio"]
+  vertical-align: baseline
+
+small
+  font-size: 0.875em
+
+span
+  font-style: inherit
+  font-weight: inherit
+
+strong
+  color: $strong-color
+  font-weight: $strong-weight
+
+// Block
+
+pre
+  +overflow-touch
+  background-color: $pre-background
+  color: $pre
+  font-size: 0.875em
+  overflow-x: auto
+  padding: 1.25rem 1.5rem
+  white-space: pre
+  word-wrap: normal
+  code
+    background-color: transparent
+    color: currentColor
+    font-size: 1em
+    padding: 0
+
+table
+  td,
+  th
+    text-align: left
+    vertical-align: top
+  th
+    color: $text-strong
+
+::selection
+  background-color: rgba($link,0.5)
+  color: $white
+
+.content-skip
+  border: none !important
+  clip: rect(0, 0, 0, 0) !important
+  height: 0.01em !important
+  overflow: hidden !important
+  padding: 0 !important
+  position: absolute !important
+  white-space: nowrap !important
+  width: 0.01em !important
+  &:active,&:focus
+    position: static
+    width: auto
+    height: auto
+    overflow: visible
+    clip: auto
+    white-space: normal

@@ -1,0 +1,204 @@
+// Default variables adapted from Bulma CSS | MIT License | https://github.com/jgthms/bulma
+  
+// RESPONSIVE BREAKPOINTS
+$gap: 64px !default
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$tablet: 769px !default
+// 960px container + 4rem
+$desktop: 960px + (2 * $gap) !default
+// 1152px container + 4rem
+$widescreen: 1152px + (2 * $gap) !default
+$widescreen-enabled: true !default
+// 1344px container + 4rem
+$fullhd: 1344px + (2 * $gap) !default
+$fullhd-enabled: false !default
+
+// COLORS
+$white-ter:    hsl(0, 0%, 96%) !default
+$white-bis:    hsl(0, 0%, 98%) !default
+$white:        hsl(0, 0%, 100%) !default
+
+$grey:         hsl(0, 0%, 48%) !default
+$grey-dark:    hsl(0, 0%, 29%) !default
+$grey-darker:  hsl(0, 0%, 21%) !default
+$grey-light:   hsl(0, 0%, 71%) !default
+$grey-lighter: hsl(0, 0%, 86%) !default
+$grey-lightest: hsl(0, 0%, 95%) !default
+
+$black:        hsl(0, 0%, 4%) !default
+$black-bis:    hsl(0, 0%, 7%) !default
+$black-ter:    hsl(0, 0%, 14%) !default
+
+$orange:       hsl(14,  100%, 53%) !default
+$yellow:       hsl(48,  100%, 67%) !default
+$green:        hsl(141, 71%,  48%) !default
+$turquoise:    hsl(171, 100%, 41%) !default
+$cyan:         hsl(204, 86%,  53%) !default
+$blue:         hsl(217, 71%,  53%) !default
+$purple:       hsl(271, 100%, 71%) !default
+$red:          hsl(348, 100%, 61%) !default
+
+$primary: $turquoise !default
+$info: $cyan !default
+$success: $green !default
+$warning: $yellow !default
+$danger: $red !default
+$light: $white-ter !default
+$dark: $grey-darker !default
+
+$header-text-color: #363636
+$header-background-color: #f0f0f0
+$body-background-color: #fefefe
+$link: $blue !default
+$link-hover: darken($link, 5%)
+
+// SIZES
+$size-small: 0.75rem !default
+$size-normal: 1rem !default
+$size-medium: 1.25rem !default
+$size-large: 1.5rem !default
+
+// DEFAULTS
+$body-size: 18px
+$body-rendering: optimizeLegibility
+$body-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+$body-color: $grey-dark
+$body-weight: 400
+$body-line-height: 1.5
+
+$header-family: "Oswald", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+$header-weight: 500
+
+$code-family: monospace
+$code-padding: 0.25em 0.5em 0.25em
+$code-weight: 400
+$code-size: 0.875em
+$code-background: $grey-lightest
+$code: #a70022
+
+$pre-background: $body-background-color
+$pre: $link
+
+$hr-background-color: $white-ter
+$hr-height: 2px
+$hr-margin: 1.5rem 0
+
+$strong-color: $grey-darker
+$strong-weight: 700
+$text-strong: $strong-color
+
+$button-background-color: $white
+$button-color: $body-color
+$button-border-color: $grey-lighter
+$button-padding: 6px 12px
+$button-radius: 4px
+$button-hover-background-color: $white-bis
+$button-hover-color: $text-strong
+$button-hover-border-color: $text-strong
+
+
+// Responsive breakpoint mixins
+=mobile
+  @media screen and (max-width: $tablet - 1px)
+    @content
+
+=tablet
+  @media screen and (min-width: $tablet - 1px), print
+    @content
+
+=tablet-only
+  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+    @content
+
+=touch
+  @media screen and (max-width: $desktop - 1px)
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content
+
+=desktop-only
+  @if $widescreen-enabled
+    @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+      @content
+
+=until-widescreen
+  @if $widescreen-enabled
+    @media screen and (max-width: $widescreen - 1px)
+      @content
+
+=widescreen
+  @if $widescreen-enabled
+    @media screen and (min-width: $widescreen)
+      @content
+
+=widescreen-only
+  @if $widescreen-enabled and $fullhd-enabled
+    @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+      @content
+
+=until-fullhd
+  @if $fullhd-enabled
+    @media screen and (max-width: $fullhd - 1px)
+      @content
+
+=fullhd
+  @if $fullhd-enabled
+    @media screen and (min-width: $fullhd)
+      @content
+
+// General mixins
+=overflow-touch
+  -webkit-overflow-scrolling: touch
+
+// SASS Shared properties (shared via @extend %name)
+%unselectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+%container
+  display: block
+  margin: 0 auto
+  +desktop
+    max-width: $desktop - (2 * $gap)
+    width: $desktop - (2 * $gap)
+  +until-widescreen
+    &.is-widescreen
+      max-width: $widescreen - (2 * $gap)
+      width: auto
+  +until-fullhd
+    &.is-fullhd
+      max-width: $fullhd - (2 * $gap)
+      width: auto
+  +widescreen
+    max-width: $widescreen - (2 * $gap)
+    width: $widescreen - (2 * $gap)
+  +fullhd
+    max-width: $fullhd - (2 * $gap)
+    width: $fullhd - (2 * $gap)
+
+%button
+  display: inline-block
+  -moz-appearance: none
+  -webkit-appearance: none
+  @extend %unselectable
+  background-color: $button-background-color
+  color: $button-color
+  border-radius: $button-radius
+  border: 1px solid $button-border-color
+  padding: $button-padding
+  cursor: pointer
+  text-align: center
+  white-space: nowrap
+  line-height: 1.5
+  .icon
+    margin-right: 0.5rem
+
+  &:hover,&:focus
+    border-color: $button-hover-border-color
+    color: $button-hover-color
+    background-color: $button-hover-background-color
