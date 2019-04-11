@@ -1,3 +1,8 @@
 {
-  "extends": "vue:recommended"
+  "extends": "plugin:vue/strongly-recommended",
+  "rules": {
+    "vue/max-attributes-per-line": ["warning", {
+      "singleline": 3
+    }]
+  }
 }
